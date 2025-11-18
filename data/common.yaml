@@ -1,0 +1,19 @@
+---
+paw_ansible_role_firewall::firewall_state: started
+paw_ansible_role_firewall::firewall_enabled_at_boot: true
+paw_ansible_role_firewall::firewall_flush_rules_and_chains: true
+paw_ansible_role_firewall::firewall_template: firewall.bash.j2
+paw_ansible_role_firewall::firewall_allowed_tcp_ports:
+- '22'
+- '25'
+- '80'
+- '443'
+paw_ansible_role_firewall::firewall_allowed_udp_ports: []
+paw_ansible_role_firewall::firewall_forwarded_tcp_ports: []
+paw_ansible_role_firewall::firewall_forwarded_udp_ports: []
+paw_ansible_role_firewall::firewall_additional_rules: []
+paw_ansible_role_firewall::firewall_enable_ipv6: true
+paw_ansible_role_firewall::firewall_ip6_additional_rules: []
+paw_ansible_role_firewall::firewall_log_dropped_packets: true
+paw_ansible_role_firewall::firewall_disable_firewalld: false
+paw_ansible_role_firewall::firewall_disable_ufw: false
