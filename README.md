@@ -8,7 +8,7 @@ Simple iptables firewall for most Unix-like systems.
 
 ## Conversion Details
 
-- **Converted on**: 2026-02-02
+- **Converted on**: 2026-02-04
 - **Original Author**: geerlingguy
 - **License**: license (BSD, MIT)
 
