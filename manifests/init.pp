@@ -62,43 +62,43 @@ class paw_ansible_role_firewall (
 # Execute the Ansible role using PAR (Puppet Ansible Runner)
 # Playbook synced via pluginsync to agent's cache directory
 # Check for common paw::par_vardir setting, then module-specific, then default
-$_par_vardir = $par_vardir ? {
-  undef   => lookup('paw::par_vardir', Stdlib::Absolutepath, 'first', '/opt/puppetlabs/puppet/cache'),
-  default => $par_vardir,
-}
-$playbook_path = "${_par_vardir}/lib/puppet_x/ansible_modules/ansible_role_firewall/playbook.yml"
+  $_par_vardir = $par_vardir ? {
+    undef   => lookup('paw::par_vardir', Stdlib::Absolutepath, 'first', '/opt/puppetlabs/puppet/cache'),
+    default => $par_vardir,
+  }
+  $playbook_path = "${_par_vardir}/lib/puppet_x/ansible_modules/ansible_role_firewall/playbook.yml"
 
-par { 'paw_ansible_role_firewall-main':
-  ensure        => present,
-  playbook      => $playbook_path,
-  playbook_vars => {
-        'port' => $port,
-        'rule' => $rule,
-        'firewall_state' => $firewall_state,
-        'firewall_enabled_at_boot' => $firewall_enabled_at_boot,
-        'firewall_flush_rules_and_chains' => $firewall_flush_rules_and_chains,
-        'firewall_template' => $firewall_template,
-        'firewall_allowed_tcp_ports' => $firewall_allowed_tcp_ports,
-        'firewall_allowed_udp_ports' => $firewall_allowed_udp_ports,
-        'firewall_forwarded_tcp_ports' => $firewall_forwarded_tcp_ports,
-        'firewall_forwarded_udp_ports' => $firewall_forwarded_udp_ports,
-        'firewall_additional_rules' => $firewall_additional_rules,
-        'firewall_enable_ipv6' => $firewall_enable_ipv6,
-        'firewall_ip6_additional_rules' => $firewall_ip6_additional_rules,
-        'firewall_log_dropped_packets' => $firewall_log_dropped_packets,
-        'firewall_disable_firewalld' => $firewall_disable_firewalld,
-        'firewall_disable_ufw' => $firewall_disable_ufw
-              },
-  tags          => $par_tags,
-  skip_tags     => $par_skip_tags,
-  start_at_task => $par_start_at_task,
-  limit         => $par_limit,
-  verbose       => $par_verbose,
-  check_mode    => $par_check_mode,
-  timeout       => $par_timeout,
-  user          => $par_user,
-  env_vars      => $par_env_vars,
-  logoutput     => $par_logoutput,
-  exclusive     => $par_exclusive,
-}
+  par { 'paw_ansible_role_firewall-main':
+    ensure        => present,
+    playbook      => $playbook_path,
+    playbook_vars => {
+      'port'                            => $port,
+      'rule'                            => $rule,
+      'firewall_state'                  => $firewall_state,
+      'firewall_enabled_at_boot'        => $firewall_enabled_at_boot,
+      'firewall_flush_rules_and_chains' => $firewall_flush_rules_and_chains,
+      'firewall_template'               => $firewall_template,
+      'firewall_allowed_tcp_ports'      => $firewall_allowed_tcp_ports,
+      'firewall_allowed_udp_ports'      => $firewall_allowed_udp_ports,
+      'firewall_forwarded_tcp_ports'    => $firewall_forwarded_tcp_ports,
+      'firewall_forwarded_udp_ports'    => $firewall_forwarded_udp_ports,
+      'firewall_additional_rules'       => $firewall_additional_rules,
+      'firewall_enable_ipv6'            => $firewall_enable_ipv6,
+      'firewall_ip6_additional_rules'   => $firewall_ip6_additional_rules,
+      'firewall_log_dropped_packets'    => $firewall_log_dropped_packets,
+      'firewall_disable_firewalld'      => $firewall_disable_firewalld,
+      'firewall_disable_ufw'            => $firewall_disable_ufw,
+    },
+    tags          => $par_tags,
+    skip_tags     => $par_skip_tags,
+    start_at_task => $par_start_at_task,
+    limit         => $par_limit,
+    verbose       => $par_verbose,
+    check_mode    => $par_check_mode,
+    timeout       => $par_timeout,
+    user          => $par_user,
+    env_vars      => $par_env_vars,
+    logoutput     => $par_logoutput,
+    exclusive     => $par_exclusive,
+  }
 }
